@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 470e46287dbc94e64b51bb01afaef292
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Passion One
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d2a09e28c3b7942b68daa4efc65b6250, type: 3}
+  - {fileID: 12800000, guid: 24e87f03d37674e438b1ebce7dd73ada, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
