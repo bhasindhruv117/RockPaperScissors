@@ -3,12 +3,39 @@ using System.Collections.Generic;
 
 public class GameStateMachine : GenericStateMachine
 {
+    #region SINGLETON
+
+    private static GameStateMachine _instance;
+
+    public static GameStateMachine Instance => _instance;
+
+    #endregion
+    
+    #region PRIVATE_VARIABLES
+
+    private MultiPlayerGame _currentMultiPlayerGame;
+    
     private NotStartedState _notStartedState;
     private PlayerTurnState _playerTurnState;
     private OpponentTurnState _opponentTurnState;
     private ResultState _resultState;
 
     private Dictionary<Type, GenericState> TypeToStateMapping = new Dictionary<Type, GenericState>();
+
+    #endregion
+    
+
+    #region GETTERS/SETTERS
+
+    public MultiPlayerGame CurrentMultiPlayerGame
+    {
+        get => _currentMultiPlayerGame;
+        set => _currentMultiPlayerGame = value;
+    }
+
+    public GenericState CurrentState => currentState;
+
+    #endregion
 
     #region GAME_STATE_EVENTS
 
@@ -23,6 +50,7 @@ public class GameStateMachine : GenericStateMachine
 
     private void Awake()
     {
+        _instance = this;
         GoToState += GoToStateHandler;
         Initialize();
     }
@@ -47,5 +75,15 @@ public class GameStateMachine : GenericStateMachine
     protected override GenericState GetInitialState()
     {
         return _notStartedState;
+    }
+
+    public bool IsPlayerMove()
+    {
+        return CurrentState is PlayerTurnState;
+    }
+
+    public bool IsResultState()
+    {
+        return CurrentState is ResultState;
     }
 }

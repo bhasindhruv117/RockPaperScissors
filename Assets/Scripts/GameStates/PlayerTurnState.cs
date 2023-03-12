@@ -10,7 +10,7 @@ public class PlayerTurnState : GenericState
 
     public override void Enter()
     {
-        base.Enter();
+        GameScreen.RaiseOnStartPlayerTurn();
     }
 
     public override void Exit()

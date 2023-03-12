@@ -13,5 +13,6 @@ public class NotStartedState : GenericState
     public override void Exit()
     {
         ScreenController.RaiseOnToggleMenuScreen(false);
+        (stateMachine as GameStateMachine).CurrentMultiPlayerGame = new MultiPlayerGame();
     }
 }

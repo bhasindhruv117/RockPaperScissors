@@ -10,11 +10,21 @@ public class ResultState : GenericState
 
     public override void Enter()
     {
-        base.Enter();
+        MultiPlayerGame multiPlayerGame = (stateMachine as GameStateMachine).CurrentMultiPlayerGame;
+        bool isRoundWon = multiPlayerGame.IsRoundWon();
+        if (isRoundWon) {
+            multiPlayerGame.IncrementRoundNumber();
+            multiPlayerGame.ResetMoves();
+            GameStateMachine.RaiseGoToState(typeof(OpponentTurnState));
+        }
+        else
+        {
+            GameStateMachine.RaiseGoToState(typeof(NotStartedState));
+        }
     }
 
     public override void Exit()
     {
-        base.Exit();
+        StatsManager.Instance.CheckAndUpdateHighScore((stateMachine as GameStateMachine).CurrentMultiPlayerGame.RoundNumber);
     }
 }

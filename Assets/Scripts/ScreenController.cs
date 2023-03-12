@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ScreenController : MonoBehaviour
 {
-    #region GAMEOBJECT_REFERENCES
+    #region REFERENCES
 
-    [SerializeField] private GameObject _menuScreen;
-    [SerializeField] private GameObject _gameScreen;
+    [SerializeField] private MenuScreen _menuScreen;
+    [SerializeField] private GameScreen _gameScreen;
 
     #endregion
 
@@ -38,12 +38,17 @@ public class ScreenController : MonoBehaviour
 
     private void ToggleGameScreen(bool showScreen)
     {
-        _gameScreen.SetActive(showScreen);
+        _gameScreen.gameObject.SetActive(showScreen);
+        if (showScreen)
+        {
+            _gameScreen.InitializeScreen();
+        }
     }
 
     private void ToggleMenuScreen(bool showScreen)
     {
-        _menuScreen.SetActive(showScreen);
+        _menuScreen.gameObject.SetActive(showScreen);
+        _menuScreen.Initialize();
     }
 
     private void OnDestroy()

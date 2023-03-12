@@ -7,10 +7,13 @@ public class OpponentTurnState : GenericState
     public override void Enter()
     {
         ScreenController.RaiseOnToggleGameScreen(true);
+        (stateMachine as GameStateMachine).CurrentMultiPlayerGame.SelectBotMoveForRound();
+        GameScreen.RaiseOnBotMovePlayed();
+        GameStateMachine.RaiseGoToState(typeof(PlayerTurnState));
     }
 
     public override void Exit()
     {
-        base.Exit();
+        
     }
 }

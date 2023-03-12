@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GenericStateMachine : MonoBehaviour
 {
-    GenericState currentState;
+    protected GenericState currentState;
 
     void Start()
     {
